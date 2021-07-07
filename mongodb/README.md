@@ -34,6 +34,7 @@ Assuming you have already downloaded and set up the Compass application, you can
 
 ```bash
 mongodb://admin:AdminUser%2a@127.0.0.1:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false
+# mongodb://admin:AdminUser*@127.0.0.1:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false
 
 # Pattern:
 # mongodb://<username>:<password>@<url>:<port>/?authSource=admin
@@ -44,3 +45,28 @@ mongodb://admin:AdminUser%2a@127.0.0.1:27017/?authSource=admin&readPreference=pr
 
 > [!IMPORTANT]
 > The port must be exposed in the docker-compose file to be able to connect via compass in this way
+
+&nbsp;
+
+## Notes
+
+### Environment Variables
+
+```yml
+# for mongodb
+environment:
+    - "MONGO_INITDB_ROOT_USERNAME=admin"
+    - "MONGO_INITDB_ROOT_PASSWORD=AdminUser*"
+
+# for mongoexpress
+environment:
+    - "ME_CONFIG_MONGODB_SERVER=mongodb"
+    - "ME_CONFIG_MONGODB_AUTH_DATABASE=admin"
+    - "ME_CONFIG_MONGODB_ENABLE_ADMIN=true"
+    - "ME_CONFIG_MONGODB_ADMINUSERNAME=admin"
+    - "ME_CONFIG_MONGODB_ADMINPASSWORD=AdminUser*"
+```
+
+* Username and password variables should be matched
+* The `AUTH_DATABASE` variable should be admin and this appears to set `authSource=admin` at the end of the connection string
+* If `ENABLE_ADMIN` is true, then `ADMINUSERNAME` and `ADMINPASSWORD` are required, otherwise use basic auth

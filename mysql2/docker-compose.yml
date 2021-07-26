@@ -14,10 +14,10 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: password
     ports: 
-      - 3306:3306
+      - 1901:3306
       
   adminer:
     image: adminer
     restart: always
     ports:
-       - 5601:8080
+       - 1902:8080

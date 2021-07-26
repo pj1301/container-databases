@@ -10,7 +10,7 @@ services:
       - "MONGO_INITDB_ROOT_USERNAME=admin"
       - "MONGO_INITDB_ROOT_PASSWORD=AdminUser*"
     ports:
-      - 27017:27017
+      - 1901:27017
     networks:
       - mongodb-net
     healthcheck:
@@ -23,7 +23,7 @@ services:
     image: mongo-express
     restart: always
     ports:
-      - 5601:8081
+      - 1902:8081
     environment:
       - "ME_CONFIG_MONGODB_SERVER=mongodb"
       - "ME_CONFIG_MONGODB_AUTH_DATABASE=admin"

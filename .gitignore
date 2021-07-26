@@ -1,2 +1,4 @@
 **/db
+**/config
+**/data
 .DS_Store

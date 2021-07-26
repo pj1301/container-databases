@@ -11,9 +11,9 @@ services:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
     ports:
-      - 5000:5432
+      - 1901:5432
   adminer:
     image: adminer
     restart: always
     ports:
-      - 5601:8080
+      - 1902:8080

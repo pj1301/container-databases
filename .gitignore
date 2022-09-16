@@ -1,0 +1,7 @@
+**/db
+**/config
+**/data
+.DS_Store
+mongodb/seeds/**
+.vscode
+**/.vscode
